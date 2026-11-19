@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101722">
+    <title>My first Three.js app</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">THREE.JS / FIRST SCENE</p>
+        <h1>A little space to explore.</h1>
+        <p>Drag to orbit. Scroll or pinch to zoom.</p>
+        <button id="toggle-rotation" type="button" aria-pressed="false">Pause rotation</button>
+      </header>
+      <canvas id="scene" aria-label="Interactive 3D scene showing a blue rotating cube"></canvas>
+      <p id="status" role="status">Loading the scene…</p>
+      <noscript><p class="notice">Enable JavaScript to view this 3D scene.</p></noscript>
+      <footer>Built with Three.js · Ready for GitHub Pages</footer>
+    </main>
+    <script type="module">
+      import('./main.js').catch((error) => {
+        console.error(error);
+        document.querySelector('#status').textContent =
+          'The 3D scene could not load. Check your internet connection and use a browser with WebGL 2 enabled.';
+        document.querySelector('#toggle-rotation').disabled = true;
+      });
+    </script>
+  </body>
+</html>
